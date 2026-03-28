@@ -36,223 +36,72 @@
         }
 
         /* --- ORNAMEN LATAR BELAKANG --- */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -2;
-        }
-
-        .bg-glow {
-            position: fixed;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(142,68,173,0.4) 0%, rgba(30,39,46,0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(40px);
-            animation: pulse 6s infinite alternate;
-        }
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -2; }
+        .bg-glow { position: fixed; width: 300px; height: 300px; background: radial-gradient(circle, rgba(142,68,173,0.4) 0%, rgba(30,39,46,0) 70%); border-radius: 50%; z-index: -1; filter: blur(40px); animation: pulse 6s infinite alternate; }
         .o1 { top: -100px; left: -50px; }
         .o2 { bottom: -50px; right: -50px; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 0.8; }
-        }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 0.8; } }
 
         /* --- HEADER --- */
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-            margin-top: 10px;
-            z-index: 10;
-        }
-
-        header h1 {
-            font-family: 'Playball', cursive;
-            font-size: 2.8rem;
-            margin: 0;
-            background: linear-gradient(45deg, var(--gold), #ffcccc, var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 0.85rem;
-            margin: 5px 0;
-            opacity: 0.9;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        header { text-align: center; margin-bottom: 25px; margin-top: 10px; z-index: 10; }
+        header h1 { font-family: 'Playball', cursive; font-size: 2.8rem; margin: 0; background: linear-gradient(45deg, var(--gold), #ffcccc, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        header p { font-size: 0.85rem; margin: 5px 0; opacity: 0.9; letter-spacing: 1px; text-transform: uppercase; }
 
         /* --- CARD STYLING --- */
-        .card {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 450px;
-            border-radius: 25px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            color: var(--text-dark);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            transition: transform 0.3s;
-        }
-
+        .card { background: var(--card-bg); width: 100%; max-width: 450px; border-radius: 25px; padding: 25px; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); color: var(--text-dark); position: relative; overflow: hidden; border: 2px solid transparent; background-clip: padding-box; transition: transform 0.3s; }
         .card:active { transform: translateY(2px) scale(0.99); }
-
-        /* Ornamen Garis & Gradient */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 6px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
-        }
-
-        /* Ornamen Ikon Berputar di Belakang */
-        .card-icon-bg {
-            position: absolute;
-            font-size: 8rem;
-            opacity: 0.05;
-            color: var(--primary);
-            right: -20px;
-            bottom: -20px;
-            z-index: 0;
-            animation: rotateIcon 15s linear infinite;
-        }
-
-        @keyframes rotateIcon {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary)); }
+        .card-icon-bg { position: absolute; font-size: 8rem; opacity: 0.05; color: var(--primary); right: -20px; bottom: -20px; z-index: 0; animation: rotateIcon 15s linear infinite; }
+        @keyframes rotateIcon { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* --- CATEGORY TITLE --- */
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .category-header iconify-icon {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        .category-title {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .category-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; position: relative; z-index: 1; }
+        .category-header iconify-icon { font-size: 1.8rem; color: var(--primary); }
+        .category-title { font-weight: 800; font-size: 1.2rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- ITEM & CHECKBOX --- */
-        .item-list {
-            position: relative;
-            z-index: 1;
-        }
-
-        .item {
-            display: flex;
-            align-items: flex-start;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            transition: background 0.2s;
-        }
-
+        .item-list { position: relative; z-index: 1; }
+        .item { display: flex; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid #eee; transition: background 0.2s; position: relative; }
         .item:last-child { border-bottom: none; }
 
         /* Custom Checkbox Mewah */
-        .checkbox-wrapper {
-            position: relative;
-            margin-right: 15px;
-            margin-top: 2px;
-        }
-
-        input[type="checkbox"] {
-            appearance: none;
-            width: 26px; height: 26px;
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: white;
-        }
-
-        input[type="checkbox"]:checked {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        input[type="checkbox"]:checked::after {
-            content: '✔';
-            position: absolute;
-            color: white;
-            font-size: 16px;
-            font-weight: 900;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-        }
+        .checkbox-wrapper { position: relative; margin-right: 15px; margin-top: 2px; }
+        input[type="checkbox"] { appearance: none; width: 26px; height: 26px; border: 2px solid var(--primary); border-radius: 8px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); background: white; }
+        input[type="checkbox"]:checked { background-color: var(--primary); border-color: var(--primary); transform: scale(1.1) rotate(5deg); }
+        input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 16px; font-weight: 900; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
         /* Text Label & Details */
-        label { display: flex; flex-direction: column; cursor: pointer; width: 100%; }
-        
-        .item-text {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            transition: 0.3s;
-        }
-
-        .item-details {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            margin-top: 4px;
-            line-height: 1.4;
-        }
-
-        /* Style saat dicentang */
-        input[type="checkbox"]:checked + label .item-text {
-            text-decoration: line-through;
-            opacity: 0.6;
-            color: #7f8c8d;
-        }
+        label { display: flex; flex-direction: column; cursor: pointer; width: calc(100% - 70px); }
+        .item-text { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); transition: 0.3s; }
+        .item-details { font-size: 0.8rem; color: #7f8c8d; margin-top: 4px; line-height: 1.4; }
+        input[type="checkbox"]:checked + label .item-text { text-decoration: line-through; opacity: 0.6; color: #7f8c8d; }
         input[type="checkbox"]:checked + label .item-details { opacity: 0.5; }
 
         /* --- LABEL KHUSUS --- */
-        .badge {
-            display: inline-block;
-            padding: 2px 7px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            margin-left: 5px;
-            text-transform: uppercase;
-        }
+        .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; margin-left: 5px; text-transform: uppercase; }
         .badge-priority { background-color: var(--accent); color: white; }
         .badge-money { background-color: #2ecc71; color: white; }
 
+        /* --- STYLING BARU UNTUK TOMBOL EDIT & MODAL --- */
+        .btn-edit { background: none; border: none; color: var(--secondary); font-size: 1.4rem; cursor: pointer; margin-left: auto; padding: 5px; transition: 0.2s; display: flex; align-items: center; }
+        .btn-edit:hover { color: var(--primary); transform: scale(1.1); }
+        
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.3s; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        
+        .modal-content { background: var(--bg); border: 2px solid var(--primary); width: 90%; max-width: 400px; padding: 20px; border-radius: 20px; text-align: center; color: var(--text-light); transform: translateY(-20px); transition: transform 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        
+        .modal-title { font-weight: bold; margin-top: 0; color: var(--gold); }
+        .modal-textarea { width: 100%; height: 120px; margin: 15px 0; padding: 15px; border-radius: 12px; border: 1px solid var(--primary); background: rgba(255,255,255,0.05); color: white; font-family: inherit; resize: none; font-size: 0.9rem; }
+        .modal-textarea:focus { outline: none; border-color: var(--secondary); background: rgba(255,255,255,0.1); }
+        
+        .modal-actions { display: flex; gap: 10px; justify-content: center; }
+        .btn-save { background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; padding: 10px 25px; color: white; border-radius: 10px; font-weight: bold; cursor: pointer; flex: 1; }
+        .btn-close { background: transparent; border: 1px solid #7f8c8d; padding: 10px 25px; color: #7f8c8d; border-radius: 10px; font-weight: bold; cursor: pointer; flex: 1; }
+
         /* --- FOOTER --- */
-        footer {
-            margin-top: auto;
-            margin-bottom: 10px;
-            font-size: 0.75rem;
-            text-align: center;
-            opacity: 0.6;
-            z-index: 10;
-        }
+        footer { margin-top: auto; margin-bottom: 10px; font-size: 0.75rem; text-align: center; opacity: 0.6; z-index: 10; }
     </style>
 </head>
 <body>
@@ -263,7 +112,7 @@
 
     <header class="animate__animated animate__zoomIn">
         <h1>For Our Future</h1>
-        <p>Visi & Komitmen </p>
+        <p>Visi & Komitmen</p>
     </header>
 
     <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
@@ -279,6 +128,7 @@
                     <span class="item-text">Kisah Lebaran Kita</span>
                     <span class="item-details">Cerita seru & kesan waktu lebaran kemarin.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('c1', 'Kisah Lebaran Kita')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="c2"></div>
@@ -286,6 +136,7 @@
                     <span class="item-text">Orang Tua Kamu</span>
                     <span class="item-details">Pandangan orang tua tentang hubungan kita & kewajibanmu ke mereka, ekspektasi orang tua ke kamu setelah menikah denganku.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('c2', 'Orang Tua Kamu')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="c3"></div>
@@ -293,6 +144,7 @@
                     <span class="item-text">Keluarga Besar</span>
                     <span class="item-details">Gambaran keluarga di luar keluarga inti.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('c3', 'Keluarga Besar')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="c4"></div>
@@ -300,6 +152,7 @@
                     <span class="item-text">Good News dari Orang Tuaku</span>
                     <span class="item-details">Orang tuaku setuju! Kita berusaha capai ini sama-sama, cerita waktu bapak disini dan pandangan ibuk.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('c4', 'Good News dari Orang Tuaku')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
         </div>
     </div>
@@ -317,6 +170,7 @@
                     <span class="item-text">Ketika Kita Serumah</span>
                     <span class="item-details">Menyampaikan ekspektasi & pandangan hidup bersama. Sayangku dulu menyampaikan ekspektasi acara nya dan kehidupan setelahnya.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('v1', 'Ketika Kita Serumah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="v2"></div>
@@ -324,6 +178,7 @@
                     <span class="item-text">Batas Toleransi</span>
                     <span class="item-details">Membahas hal-hal yang boleh & tidak dalam hubungan.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('v2', 'Batas Toleransi')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="v3"></div>
@@ -331,6 +186,7 @@
                     <span class="item-text">Niat & Kesanggupan Alfa</span>
                     <span class="item-details">Rencana Alfa untuk menjaga dan mendampingi kamu. 10 - 30 juta di Februari 2027</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('v3', 'Niat & Kesanggupan Alfa')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
         </div>
     </div>
@@ -346,8 +202,9 @@
                 <div class="checkbox-wrapper"><input type="checkbox" id="g1"></div>
                 <label for="g1">
                     <span class="item-text">1. Menikah<span class="badge badge-priority">UTAMA</span></span>
-                    <span class="item-details">Target: Habos Idul Fitri 2026 dilamar dan menikah pas adha. Alasan: Buat tenang, jaga agama, butuh yang mendampingi.</span>
+                    <span class="item-details">Target: Habis Idul Fitri 2026 dilamar dan menikah pas adha. Alasan: Buat tenang, jaga agama, butuh yang mendampingi.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('g1', '1. Menikah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="g2"></div>
@@ -355,6 +212,7 @@
                     <span class="item-text">2. Memiliki Mobil</span>
                     <span class="item-details">Alasan: Kerja luar kota, bolak-balik Pacitan-Kediri. Gamau sayang capek di bonceng, jaga kesehatan.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('g2', '2. Memiliki Mobil')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="g3"></div>
@@ -362,6 +220,7 @@
                     <span class="item-text">3. Memiliki Rumah</span>
                     <span class="item-details">Cari yang sesuai kalau tempat sudah settle.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('g3', '3. Memiliki Rumah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="g4"></div>
@@ -369,6 +228,7 @@
                     <span class="item-text">4. Umroh / Haji</span>
                     <span class="item-details">Penyempurna Ibadah. Dicapai setelah settle. Prioritas Haji dulu kalau rejeki dibagi.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('g4', '4. Umroh / Haji')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
         </div>
     </div>
@@ -386,6 +246,7 @@
                     <span class="item-text">Gaji Minimal: 3.373k+<span class="badge badge-money">TOTAL</span></span>
                     <span class="item-details">(Rp2.673k gaji + Rp700k tambahan).</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('f1', 'Gaji Minimal')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="f2"></div>
@@ -393,6 +254,7 @@
                     <span class="item-text">Tabungan<span class="badge badge-money">2.000k / bln</span></span>
                     <span class="item-details">Detail: 500k Kontrakan, 1.500k Nikah. (Agustus: 10jt, sisa 6jt nikah).</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('f2', 'Tabungan')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="f3"></div>
@@ -400,6 +262,7 @@
                     <span class="item-text">Biaya Hidup Alfa</span>
                     <span class="item-details">Budget: 500k Makan, 300k Bensin/Pulang, 150k Kuota, 100k Listrik. (Total 1.050k).</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('f3', 'Biaya Hidup Alfa')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="f4"></div>
@@ -407,6 +270,7 @@
                     <span class="item-text">Budget Main<span class="badge">Sisa Gaji</span></span>
                     <span class="item-details">Sisa 350k - 800k. Estimasi 3x main sebulan (100k-300k per main). Atau sesuai kesepakatan.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('f4', 'Budget Main')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="f5"></div>
@@ -414,6 +278,7 @@
                     <span class="item-text">Aturan Bonus</span>
                     <span class="item-details">Jika ada bonus dll: 50% Tabung, 50% Main.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('f5', 'Aturan Bonus')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="f6"></div>
@@ -421,6 +286,7 @@
                     <span class="item-text">Quality Time Murah</span>
                     <span class="item-details">Banyakin main di rumah & masak bareng.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('f6', 'Quality Time Murah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
         </div>
     </div>
@@ -438,6 +304,7 @@
                     <span class="item-text">Platform & Eksekusi</span>
                     <span class="item-details">Target: Toko Shopee & GrabFood. Deadline: MEI sudah BUKA!</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('b1', 'Platform & Eksekusi')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="b2"></div>
@@ -445,13 +312,26 @@
                     <span class="item-text">Modal Awal: 500k</span>
                     <span class="item-details">Diambil dari tabungan kontrakan bulan ini.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('b2', 'Modal Awal')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
             <div class="item">
                 <div class="checkbox-wrapper"><input type="checkbox" id="b3"></div>
                 <label for="b3">
-                    <span class="item-text">Aktivitas </span>
+                    <span class="item-text">Aktivitas</span>
                     <span class="item-details">Setiap main, kita belajar sama-sama.</span>
                 </label>
+                <button class="btn-edit" onclick="openModal('b3', 'Aktivitas')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="answerModal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Judul Pertanyaan</h3>
+            <textarea class="modal-textarea" id="modalInput" placeholder="Ketik jawaban atau catatan di sini..."></textarea>
+            <div class="modal-actions">
+                <button class="btn-close" onclick="closeModal()">Batal</button>
+                <button class="btn-save" onclick="saveAnswer()">Simpan</button>
             </div>
         </div>
     </div>
@@ -463,7 +343,7 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // CONFIG PARTICLES (BIAR RAME TITIK-TITIK CAHAYA)
+        // CONFIG PARTICLES
         particlesJS("particles-js", {
           particles: {
             number: { value: 60, density: { enable: true, value_area: 800 } },
@@ -478,26 +358,66 @@
           retina_detect: true
         });
 
-        // LOAD & SAVE CHECKBOX (LOCAL STORAGE)
+        // CHECKBOX LOCAL STORAGE
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-        // Saat halaman dibuka
         checkboxes.forEach(box => {
-            const savedValue = localStorage.getItem(box.id);
-            if (savedValue === 'true') {
-                box.checked = true;
-            }
-        });
-
-        // Saat centang diklik
-        checkboxes.forEach(box => {
+            if (localStorage.getItem(box.id) === 'true') box.checked = true;
             box.addEventListener('change', () => {
                 localStorage.setItem(box.id, box.checked);
-                if (box.checked && window.navigator.vibrate) {
-                    window.navigator.vibrate(80); // Getar sedikit biar kerasa 'mewah'
-                }
+                if (box.checked && window.navigator.vibrate) window.navigator.vibrate(80);
             });
         });
+
+        // LOGIK UNTUK MODAL & DATABASE (API VERCEL)
+        let currentNoteId = null;
+
+        async function openModal(id, title) {
+            currentNoteId = id;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalInput').value = 'Memuat jawaban...';
+            document.getElementById('answerModal').classList.add('active');
+
+            try {
+                // Fetch data memanggil endpoint /api/notes di Vercel
+                const res = await fetch(`/api/notes?id=${id}`);
+                const data = await res.json();
+                document.getElementById('modalInput').value = data.content || '';
+            } catch (err) {
+                document.getElementById('modalInput').value = localStorage.getItem('note_'+id) || '';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('answerModal').classList.remove('active');
+        }
+
+        async function saveAnswer() {
+            const text = document.getElementById('modalInput').value;
+            const btnSave = document.querySelector('.btn-save');
+            btnSave.innerText = 'Menyimpan...';
+
+            try {
+                // Post data ke endpoint /api/notes di Vercel
+                await fetch('/api/notes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: currentNoteId, content: text })
+                });
+                
+                localStorage.setItem('note_'+currentNoteId, text);
+                
+                btnSave.innerText = 'Tersimpan!';
+                setTimeout(() => {
+                    closeModal();
+                    btnSave.innerText = 'Simpan';
+                }, 800);
+            } catch (err) {
+                alert('Gagal menyimpan ke database, tapi tersimpan di browser ini.');
+                localStorage.setItem('note_'+currentNoteId, text);
+                closeModal();
+                btnSave.innerText = 'Simpan';
+            }
+        }
     </script>
 </body>
 </html>
