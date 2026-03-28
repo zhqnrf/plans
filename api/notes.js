@@ -1,9 +1,8 @@
 const { createClient } = require('@libsql/client/web');
 
 module.exports = async function handler(req, res) {
-    // Pastikan env variables terbaca
     if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
-        return res.status(500).json({ error: "Database credentials missing in Vercel!" });
+        return res.status(500).json({ error: "Environment variables missing!" });
     }
 
     const db = createClient({
@@ -12,14 +11,15 @@ module.exports = async function handler(req, res) {
     });
 
     try {
-        await db.execute("CREATE TABLE IF NOT EXISTS notes (id TEXT PRIMARY KEY, content TEXT)");
+        // NAMA TABEL DIGANTI JADI 'planner_notes' BIAR TIDAK BENTROK
+        await db.execute("CREATE TABLE IF NOT EXISTS planner_notes (id TEXT PRIMARY KEY, content TEXT)");
 
         if (req.method === 'GET') {
             const { id } = req.query;
             if (!id) return res.status(200).json({ content: "" });
             
             const result = await db.execute({
-                sql: "SELECT content FROM notes WHERE id = ?",
+                sql: "SELECT content FROM planner_notes WHERE id = ?",
                 args: [id]
             });
             
@@ -31,7 +31,7 @@ module.exports = async function handler(req, res) {
             const { id, content } = req.body;
             if (id) {
                 await db.execute({
-                    sql: "INSERT INTO notes (id, content) VALUES (?, ?) ON CONFLICT(id) DO UPDATE SET content = excluded.content",
+                    sql: "INSERT INTO planner_notes (id, content) VALUES (?, ?) ON CONFLICT(id) DO UPDATE SET content = excluded.content",
                     args: [id, content]
                 });
             }
