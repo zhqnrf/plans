@@ -11,16 +11,16 @@ module.exports = async function handler(req, res) {
     });
 
     try {
-        // NAMA TABEL DIGANTI JADI 'planner_notes' BIAR TIDAK BENTROK
         await db.execute("CREATE TABLE IF NOT EXISTS planner_notes (id TEXT PRIMARY KEY, content TEXT)");
 
         if (req.method === 'GET') {
-            const { id } = req.query;
+            const id = req.query.id;
             if (!id) return res.status(200).json({ content: "" });
             
+            // Bungkus pakai String() biar nggak undefined
             const result = await db.execute({
                 sql: "SELECT content FROM planner_notes WHERE id = ?",
-                args: [id]
+                args: [String(id)]
             });
             
             const content = result.rows.length > 0 ? result.rows[0].content : "";
@@ -28,13 +28,17 @@ module.exports = async function handler(req, res) {
         } 
         
         else if (req.method === 'POST') {
-            const { id, content } = req.body;
-            if (id) {
-                await db.execute({
-                    sql: "INSERT INTO planner_notes (id, content) VALUES (?, ?) ON CONFLICT(id) DO UPDATE SET content = excluded.content",
-                    args: [id, content]
-                });
-            }
+            const id = req.body.id;
+            const content = req.body.content || ""; // Kalau kosong, jadikan string kosong
+            
+            if (!id) return res.status(400).json({ error: "ID hilang dari request" });
+
+            // Bungkus pakai String() semuanya
+            await db.execute({
+                sql: "INSERT INTO planner_notes (id, content) VALUES (?, ?) ON CONFLICT(id) DO UPDATE SET content = excluded.content",
+                args: [String(id), String(content)]
+            });
+            
             return res.status(200).json({ success: true });
         }
 
@@ -42,6 +46,10 @@ module.exports = async function handler(req, res) {
         
     } catch (error) {
         console.error("Database Error:", error);
-        return res.status(500).json({ error: error.message });
+        // Biar error aslinya kelihatan di Network tab kamu, kita kirim balik ke browser!
+        return res.status(500).json({ 
+            info: "Error saat eksekusi query", 
+            detail_error: error.message 
+        });
     }
 }
