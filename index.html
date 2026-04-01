@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Planner: Dilla & Alfa</title>
+    <title>Future Planner</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playball&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -21,8 +21,8 @@
         @keyframes pulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 0.8; } }
         header { text-align: center; margin-bottom: 25px; margin-top: 10px; z-index: 10; }
         header h1 { font-family: 'Playball', cursive; font-size: 2.8rem; margin: 0; background: linear-gradient(45deg, var(--gold), #ffcccc, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-        header p { font-size: 0.85rem; margin: 5px 0; opacity: 0.9; letter-spacing: 1px; text-transform: uppercase; font-weight: bold; }
-        .card { background: var(--card-bg); width: 100%; max-width: 500px; border-radius: 25px; padding: 25px; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); color: var(--text-dark); position: relative; overflow: hidden; border: 2px solid transparent; background-clip: padding-box; transition: transform 0.3s; }
+        header p { font-size: 0.85rem; margin: 5px 0; opacity: 0.9; letter-spacing: 1px; text-transform: uppercase; }
+        .card { background: var(--card-bg); width: 100%; max-width: 450px; border-radius: 25px; padding: 25px; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); color: var(--text-dark); position: relative; overflow: hidden; border: 2px solid transparent; background-clip: padding-box; transition: transform 0.3s; }
         .card:active { transform: translateY(2px) scale(0.99); }
         .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary)); }
         .card-icon-bg { position: absolute; font-size: 8rem; opacity: 0.05; color: var(--primary); right: -20px; bottom: -20px; z-index: 0; animation: rotateIcon 15s linear infinite; }
@@ -38,30 +38,28 @@
         input[type="checkbox"]:checked { background-color: var(--primary); border-color: var(--primary); transform: scale(1.1) rotate(5deg); }
         input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 16px; font-weight: 900; top: 50%; left: 50%; transform: translate(-50%, -50%); }
         label { display: flex; flex-direction: column; cursor: pointer; width: calc(100% - 70px); }
-        .item-text { font-size: 1rem; font-weight: 700; color: var(--text-dark); transition: 0.3s; margin-bottom: 4px; }
-        .item-details { font-size: 0.85rem; color: #555; margin-top: 4px; line-height: 1.5; }
-        .item-details ul { margin: 5px 0 0 0; padding-left: 18px; }
-        .item-details li { margin-bottom: 4px; }
+        .item-text { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); transition: 0.3s; }
+        .item-details { font-size: 0.8rem; color: #7f8c8d; margin-top: 4px; line-height: 1.4; }
         input[type="checkbox"]:checked + label .item-text { text-decoration: line-through; opacity: 0.6; color: #7f8c8d; }
         input[type="checkbox"]:checked + label .item-details { opacity: 0.5; }
-        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; margin-left: 5px; text-transform: uppercase; vertical-align: middle; }
+        .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; margin-left: 5px; text-transform: uppercase; }
         .badge-priority { background-color: var(--accent); color: white; }
         .badge-money { background-color: #2ecc71; color: white; }
-        .badge-info { background-color: #3498db; color: white; }
         
+        /* Modal & Edit Btn */
         .btn-edit { background: none; border: none; color: var(--secondary); font-size: 1.4rem; cursor: pointer; margin-left: auto; padding: 5px; transition: 0.2s; display: flex; align-items: center; }
         .btn-edit:hover { color: var(--primary); transform: scale(1.1); }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.3s; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--bg); border: 2px solid var(--primary); width: 95%; max-width: 450px; padding: 25px; border-radius: 20px; text-align: center; color: var(--text-light); transform: translateY(-20px); transition: transform 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .modal-content { background: var(--bg); border: 2px solid var(--primary); width: 90%; max-width: 400px; padding: 20px; border-radius: 20px; text-align: center; color: var(--text-light); transform: translateY(-20px); transition: transform 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-title { font-weight: 800; margin-top: 0; color: var(--gold); font-size: 1.3rem; line-height: 1.4; }
-        .modal-textarea { width: 100%; height: 180px; margin: 15px 0; padding: 15px; border-radius: 12px; border: 1px solid var(--primary); background: rgba(255,255,255,0.05); color: white; font-family: inherit; resize: vertical; font-size: 0.95rem; line-height: 1.5; }
+        .modal-title { font-weight: bold; margin-top: 0; color: var(--gold); }
+        .modal-textarea { width: 100%; height: 120px; margin: 15px 0; padding: 15px; border-radius: 12px; border: 1px solid var(--primary); background: rgba(255,255,255,0.05); color: white; font-family: inherit; resize: none; font-size: 0.9rem; }
         .modal-textarea:focus { outline: none; border-color: var(--secondary); background: rgba(255,255,255,0.1); }
         .modal-actions { display: flex; gap: 10px; justify-content: center; }
-        .btn-save { background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; padding: 12px 25px; color: white; border-radius: 10px; font-weight: bold; cursor: pointer; flex: 1; font-size: 1rem; }
-        .btn-close { background: transparent; border: 1px solid #7f8c8d; padding: 12px 25px; color: #7f8c8d; border-radius: 10px; font-weight: bold; cursor: pointer; flex: 1; font-size: 1rem; }
-        footer { margin-top: auto; margin-bottom: 20px; font-size: 0.8rem; text-align: center; opacity: 0.7; z-index: 10; line-height: 1.5; }
+        .btn-save { background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; padding: 10px 25px; color: white; border-radius: 10px; font-weight: bold; cursor: pointer; flex: 1; }
+        .btn-close { background: transparent; border: 1px solid #7f8c8d; padding: 10px 25px; color: #7f8c8d; border-radius: 10px; font-weight: bold; cursor: pointer; flex: 1; }
+        footer { margin-top: auto; margin-bottom: 10px; font-size: 0.75rem; text-align: center; opacity: 0.6; z-index: 10; }
     </style>
 </head>
 <body>
@@ -71,354 +69,293 @@
     <div class="bg-glow o2"></div>
 
     <header class="animate__animated animate__zoomIn">
-        <h1>Buku Perjalanan Kita</h1>
-        <p>Pre-Marital Planner: Dilla & Alfa</p>
+        <h1>Cerita Yuk !</h1>
+        <p>Episode 1</p>
     </header>
+<button class="btn-save animate__animated animate__zoomIn" style="margin-bottom: 25px; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; padding: 12px 30px;" onclick="openRoller()">
+        <iconify-icon icon="solar:gamepad-bold"></iconify-icon> Acak Siapa Duluan!
+    </button>
 
+    <div class="modal-overlay" id="rollerModal">
+        <div class="modal-content">
+            <h3 class="modal-title" style="font-size: 1.5rem;">Giliran Siapa Nih?</h3>
+            
+            <div id="rollerBox" style="font-size: 2.5rem; font-weight: 800; margin: 25px 0; padding: 30px 10px; border-radius: 15px; background: rgba(0,0,0,0.2); border: 3px dashed var(--secondary); color: white; letter-spacing: 2px; transition: all 0.2s;">
+                ???
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-close" onclick="closeRoller()">Tutup</button>
+                <button class="btn-save" id="btnStartRoll" onclick="startRolling()" style="font-size: 1.1rem;">🎲 Putar!</button>
+            </div>
+        </div>
+    </div>
     <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-        <iconify-icon icon="solar:cup-star-bold" class="card-icon-bg"></iconify-icon>
+        <iconify-icon icon="solar:users-group-rounded-bold" class="card-icon-bg"></iconify-icon>
         <div class="category-header">
-            <iconify-icon icon="solar:chat-round-like-bold"></iconify-icon>
-            <span class="category-title">1. Deep Talk & Perasaan</span>
+            <iconify-icon icon="solar:users-group-rounded-bold"></iconify-icon>
+            <span class="category-title">1. Akar & Restu Keluarga</span>
         </div>
         <div class="item-list">
-            
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="dt1"></div>
-                <label for="dt1">
-                    <span class="item-text">Review Lebaran Kemarin</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="c1"></div>
+                <label for="c1">
+                    <span class="item-text">Cerita Lebaran Kemarin</span>
                     <span class="item-details">
-                           <ul style="margin-top: 5px; padding-left: 20px;">
-            <li><strong>Dilla:</strong> Tiba-tiba diminta segera menikah oleh keluarga.</li>
-            <li><strong>Dilla:</strong> Obrolan hangat tentang calon menantu dan rencana beli baju.</li>
-            <li><strong>Dilla:</strong> Sesi cerita mendalam tentang silsilah dan asal-usul saudara.</li>
-            <li><strong>Dilla:</strong> Biaya transportasi untuk pernikahan.</li>
-            
-            <li><strong>Alfa:</strong> Ibu menyampaikan pandangan pribadinya tentang rencana pernikahanku.</li>
-            <li><strong>Alfa:</strong> Bapak memberikan nasihat khusus soal pernikahan saat sedang di rumah.</li>
-            <li><strong>Alfa:</strong> Bapak memastikan kemantapan hatiku dan menjelaskan sudut pandang Ibu.</li>
-        </ul>
-                    </span>
-                </label>
-                <button class="btn-edit" onclick="openModal('dt1', 'Review Lebaran Kemarin')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
-            </div>
-
-            <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="dt2"></div>
-                <label for="dt2">
-                    <span class="item-text">Masalah yang Terpendam <span class="badge badge-priority">PENTING</span></span>
-                    <span class="item-details">Jujur yuk. Selama LDR Surabaya-Kediri/Pacitan ini, adakah ganjalan atau rasa cemburu yang sulit diutarakan? Mari selesaikan sekarang tanpa emosi.</span>
-                </label>
-                <button class="btn-edit" onclick="openModal('dt2', 'Masalah yang Terpendam')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
-            </div>
-
-            <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="dt3"></div>
-                <label for="dt3">
-                    <span class="item-text">Love Language & Me-Time</span>
-                    <span class="item-details">
-                        <ul>
-                            <li>Gimana cara kita merasa paling dicintai? (Misal: Dilla suka dibeliin ayam madu, Alfa butuh waktu me-time nonton Naruto atau ngoprek laptop).</li>
-                            <li>Berapa porsi waktu pribadi yang disepakati setelah nikah?</li>
+                        Momen seru dan kesan berharga dari dua sisi:
+                        <ul style="margin-top: 5px; padding-left: 20px;">
+                            <li><strong>Dilla:</strong> Tiba-tiba diminta segera menikah oleh keluarga.</li>
+                            <li><strong>Dilla:</strong> Obrolan hangat tentang calon menantu dan rencana beli baju.</li>
+                            <li><strong>Dilla:</strong> Sesi cerita mendalam tentang silsilah dan asal-usul saudara.</li>
+                            <li><strong>Dilla:</strong> Biaya transportasi untuk pernikahan.</li>
+                            <li><strong>Alfa:</strong> Ibu menyampaikan pandangan pribadinya tentang rencana pernikahanku.</li>
+                            <li><strong>Alfa:</strong> Bapak memberikan nasihat khusus soal pernikahan saat sedang di rumah.</li>
+                            <li><strong>Alfa:</strong> Bapak memastikan kemantapan hatiku dan menjelaskan sudut pandang Ibu.</li>
                         </ul>
                     </span>
                 </label>
-                <button class="btn-edit" onclick="openModal('dt3', 'Love Language & Me-Time')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('c1', 'Cerita Lebaran Kemarin')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="dt4"></div>
-                <label for="dt4">
-                    <span class="item-text">Pola Komunikasi Saat Marah</span>
-                    <span class="item-details">Kalau lagi bertengkar hebat, apa kesepakatannya? Boleh silent treatment berapa lama? Kapan harus nurunkan ego duluan?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="c2"></div>
+                <label for="c2">
+                    <span class="item-text">Orang Tua Kamu</span>
+                    <span class="item-details">Pandangan orang tua tentang hubungan kita & kewajiban kita ke mereka.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('dt4', 'Pola Komunikasi Saat Marah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('c2', 'Orang Tua Kamu')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
+            <div class="item">
+                <div class="checkbox-wrapper"><input type="checkbox" id="c3"></div>
+                <label for="c3">
+                    <span class="item-text">Keluarga Besar</span>
+                    <span class="item-details">Gambaran hubungan kita di luar keluarga inti.</span>
+                </label>
+                <button class="btn-edit" onclick="openModal('c3', 'Keluarga Besar')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+            </div>
+            <div class="item">
+                <div class="checkbox-wrapper"><input type="checkbox" id="c4"></div>
+                <label for="c4">
+                    <span class="item-text">Lamaran, Akad dan Pernikahan</span>
+                    <span class="item-details">Siapa aja yang diundang dari sisi alfa dan dari sisi dilla (perkiraan), gimana asal biaya (pembagian)</span>
+                </label>
+                <button class="btn-edit" onclick="openModal('c4', 'Lamaran, Akad dan Pernikahan')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+            </div>
         </div>
     </div>
 
     <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-        <iconify-icon icon="solar:home-smile-bold" class="card-icon-bg"></iconify-icon>
+        <iconify-icon icon="solar:hearts-bold" class="card-icon-bg"></iconify-icon>
         <div class="category-header">
-            <iconify-icon icon="solar:clipboard-list-bold"></iconify-icon>
-            <span class="category-title">2. Pondasi & Ekspektasi</span>
+            <iconify-icon icon="solar:heart-bold"></iconify-icon>
+            <span class="category-title">2. Kejujuran & Fondasi</span>
         </div>
         <div class="item-list">
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="pe1"></div>
-                <label for="pe1">
-                    <span class="item-text">Makna Visi Pernikahan</span>
-                    <span class="item-details">Bagi kita berdua, gol utama pernikahan itu apa? Mencapai ketenangan kah? Kebebasan finansial bareng?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="v1"></div>
+                <label for="v1">
+                    <span class="item-text">Masalah yang dipendam selama hubungan</span>
+                    <span class="item-details">Masalah apa yang sulitdi utarakan ? harus dibilang semuanya dengan jujur. Sesuatu yang ditoleransi sama tidak</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('pe1', 'Visi Pernikahan')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('v1', 'Masalah yang dipendam')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="pe2"></div>
-                <label for="pe2">
-                    <span class="item-text">Batas Toleransi (Red Flags)</span>
-                    <span class="item-details">Sepakati hal yang TIDAK BISA dimaafkan: KDRT, perselingkuhan, atau menyembunyikan hutang/pinjol. Setuju?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="v2"></div>
+                <label for="v2">
+                    <span class="item-text">Hal yang penting dan kesukaan</span>
+                    <span class="item-details">Hal hal penting apa yang dimiliki masing masing ? dan apa kesukaan yang dimiliki</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('pe2', 'Batas Toleransi Hubungan')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('v2', 'Hal yang penting')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="pe3"></div>
-                <label for="pe3">
-                    <span class="item-text">Tugas Domestik di Kontrakan</span>
-                    <span class="item-details">
-                        Mengingat kita sewa kontrakan (budget 4 juta/tahun), gimana pembagian tugas sehari-harinya?
-                        <ul>
-                            <li>Siapa yang masak, nyapu, cuci baju, dan bersihin kamar mandi?</li>
-                            <li>Harus fleksibel kalau salah satu lagi capek pulang kerja.</li>
-                        </ul>
-                    </span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="v3"></div>
+                <label for="v3">
+                    <span class="item-text">Batas Toleransi</span>
+                    <span class="item-details">Membahas hal-hal yang boleh & tidak dalam hubungan.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('pe3', 'Tugas Domestik Kontrakan')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('v3', 'Batas Toleransi')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="pe4"></div>
-                <label for="pe4">
-                    <span class="item-text">Dinamika Pekerjaan IT & Jaga Kesehatan</span>
-                    <span class="item-details">Pekerjaan di IT RSUD SLG pasti ada masa lembur atau benerin error dadakan (kayak urusan raw drives flashdisk). Gimana cara saling dukung saat kerjaan lagi *hectic*?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="v4"></div>
+                <label for="v4">
+                    <span class="item-text">Ketika Kita Serumah</span>
+                    <span class="item-details">Menyampaikan ekspektasi & pandangan hidup</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('pe4', 'Dinamika Pekerjaan & Support')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('v4', 'Ketika Kita Serumah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
-            <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="pe5"></div>
-                <label for="pe5">
-                    <span class="item-text">Privasi Sosial Media & HP</span>
-                    <span class="item-details">Boleh cek HP masing-masing atau jaga privasi? Gimana batasan berteman/chat dengan lawan jenis di tempat kerja?</span>
-                </label>
-                <button class="btn-edit" onclick="openModal('pe5', 'Privasi & Sosial Media')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
-            </div>
-
         </div>
     </div>
 
     <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-        <iconify-icon icon="solar:hearts-bold" class="card-icon-bg"></iconify-icon>
+        <iconify-icon icon="solar:rocket-bold" class="card-icon-bg"></iconify-icon>
         <div class="category-header">
-            <iconify-icon icon="solar:users-group-rounded-bold"></iconify-icon>
-            <span class="category-title">3. Keluarga & Acara</span>
+            <iconify-icon icon="solar:flag-bold"></iconify-icon>
+            <span class="category-title">3. Visi & Target Utama</span>
         </div>
         <div class="item-list">
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ka1"></div>
-                <label for="ka1">
-                    <span class="item-text">Kewajiban ke Orang Tua</span>
-                    <span class="item-details">Setelah nikah, apakah masih ada jatah bulanan untuk orang tua/adik dari pihak Alfa maupun Dilla? Berapa nominal pastinya biar fair?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="t1"></div>
+                <label for="t1">
+                    <span class="item-text">Niat & Kesanggupan Alfa</span>
+                    <span class="item-details">Rencana Alfa  20 juta di Februari 2027. Kalau bisa lebih alhamdulilah.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ka1', 'Kewajiban ke Orang Tua')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('t1', 'Niat & Kesanggupan Alfa')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ka2"></div>
-                <label for="ka2">
-                    <span class="item-text">Batasan Campur Tangan Mertua</span>
-                    <span class="item-details">Siapa yang jadi "tameng" kalau ada keluarga yang terlalu ikut campur urusan rumah tangga kita? (Kesepakatan: masing-masing *handle* keluarga kandungnya).</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="t2"></div>
+                <label for="t2">
+                    <span class="item-text">Menikah</span>
+                    <span class="item-details">menikah itu dicapai bersama atau bagaimana ?</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ka2', 'Batasan Campur Tangan Mertua')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('t2', 'Menikah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ka3"></div>
-                <label for="ka3">
-                    <span class="item-text">Persiapan Mahar <span class="badge badge-info">UPDATE HARGA</span></span>
-                    <span class="item-details">
-                        Kesepakatan: Mahar Emas 5 Gram.
-                        <ul>
-                            <li>Harga Antam saat ini Rp 3.000.000 / gram.</li>
-                            <li>Total dana mahar yang harus standby: <strong>Rp 15.000.000</strong>. Kapan target belinya?</li>
-                        </ul>
-                    </span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="t3"></div>
+                <label for="t3">
+                    <span class="item-text">1. Menikah<span class="badge badge-priority">UTAMA</span></span>
+                    <span class="item-details">Target: Habis Idul Fitri 2026 dilamar dan menikah pas adha.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ka3', 'Persiapan Mahar 5 Gram')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('t3', '1. Menikah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ka4"></div>
-                <label for="ka4">
-                    <span class="item-text">Detail Lamaran & Akad</span>
-                    <span class="item-details">List undangan inti (siapa dari sisi Alfa, siapa dari Dilla). Gimana skema pembagian biaya tenda, katering, dan baju pernikahan?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="t4"></div>
+                <label for="t4">
+                    <span class="item-text">2. Memiliki Mobil</span>
+                    <span class="item-details">Kerja luar kota, bolak-balik Pacitan-Kediri. Gamau sayang capek di bonceng.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ka4', 'Detail Undangan & Acara')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('t4', '2. Memiliki Mobil')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
+            <div class="item">
+                <div class="checkbox-wrapper"><input type="checkbox" id="t5"></div>
+                <label for="t5">
+                    <span class="item-text">3. Memiliki Rumah</span>
+                    <span class="item-details">Cari yang sesuai kalau tempat sudah settle.</span>
+                </label>
+                <button class="btn-edit" onclick="openModal('t5', '3. Memiliki Rumah')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+            </div>
+            <div class="item">
+                <div class="checkbox-wrapper"><input type="checkbox" id="t6"></div>
+                <label for="t6">
+                    <span class="item-text">4. Umroh / Haji</span>
+                    <span class="item-details">Penyempurna Ibadah. Dicapai setelah settle.</span>
+                </label>
+                <button class="btn-edit" onclick="openModal('t6', '4. Umroh / Haji')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+            </div>
         </div>
     </div>
 
     <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-        <iconify-icon icon="solar:star-fall-bold" class="card-icon-bg"></iconify-icon>
+        <iconify-icon icon="solar:money-bag-bold" class="card-icon-bg"></iconify-icon>
         <div class="category-header">
-            <iconify-icon icon="solar:rocket-bold"></iconify-icon>
-            <span class="category-title">4. Target 3-5 Tahun Kita</span>
+            <iconify-icon icon="solar:wallet-money-bold"></iconify-icon>
+            <span class="category-title">4. Strategi Ekonomi & Bisnis <span class="badge badge-money">Transparan</span></span>
         </div>
         <div class="item-list">
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="tg1"></div>
-                <label for="tg1">
-                    <span class="item-text">1. Eksekusi Menikah <span class="badge badge-priority">UTAMA</span></span>
-                    <span class="item-details">Timeline Pasti: Habis Idul Fitri 2026 dilamar, dan akad nikah dilaksanakan pada momen Idul Adha. Semua persiapan harus beres H-2 bulan.</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="f1"></div>
+                <label for="f1">
+                    <span class="item-text">Pengelolaan Uang</span>
+                    <span class="item-details">Bagaimana jika punya 2 pemasukan ? di jadikan satu atau sendiri sendiri</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('tg1', 'Eksekusi Menikah 2026')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('f1', 'Pengelolaan Uang')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="tg2"></div>
-                <label for="tg2">
-                    <span class="item-text">2. Upgrade ke Mobil Pribadi</span>
-                    <span class="item-details">Gak mau selamanya pakai MegaPro Mono untuk luar kota. Jalur Pacitan-Kediri-Surabaya bikin capek dan kasihan kalau boncengan terus. Kapan mau nyicil/beli tunai mobil?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="f2"></div>
+                <label for="f2">
+                    <span class="item-text">Gaji Minimal: 3.373k+<span class="badge badge-money">TOTAL</span></span>
+                    <span class="item-details">(Rp2.673k gaji + Rp700k tambahan).</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('tg2', 'Upgrade Kendaraan (Mobil)')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('f2', 'Gaji Minimal')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="tg3"></div>
-                <label for="tg3">
-                    <span class="item-text">3. Beli Rumah Sendiri</span>
-                    <span class="item-details">Setelah masa sewa kontrakan habis, mau lanjut sewa atau mulai KPR/beli tanah? Diskusikan lokasi ideal (Kediri/Surabaya/tempat netral).</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="f3"></div>
+                <label for="f3">
+                    <span class="item-text">Tabungan<span class="badge badge-money">2.000k / bln</span></span>
+                    <span class="item-details">Detail: 500k Kontrakan, 1.500k Nikah. Jika Kontrakan Selesai maka full menikah</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('tg3', 'Beli Rumah Pribadi')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('f3', 'Tabungan')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="tg4"></div>
-                <label for="tg4">
-                    <span class="item-text">4. Penyempurna Ibadah (Umroh/Haji)</span>
-                    <span class="item-details">Mulai buka tabungan khusus Haji/Umroh dari sekarang meski kecil-kecilan. Dicapai setelah urusan rumah dan mobil *settle*.</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="f4"></div>
+                <label for="f4">
+                    <span class="item-text">Biaya Hidup Alfa</span>
+                    <span class="item-details">Budget: 500k Makan, 300k Bensin/Pulang, 150k Kuota, 100k Listrik.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('tg4', 'Tabungan Umroh/Haji')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('f4', 'Biaya Hidup Alfa')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="tg5"></div>
-                <label for="tg5">
-                    <span class="item-text">5. Rencana Keturunan (Momongan)</span>
-                    <span class="item-details">Mau langsung punya anak atau nunda dulu? Berapa jumlah anak yang diimpikan? Konsep *parenting* seperti apa yang mau diterapkan?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="f5"></div>
+                <label for="f5">
+                    <span class="item-text">Budget Main<span class="badge">Sisa Gaji</span></span>
+                    <span class="item-details">Sisa 350k - 800k. Estimasi 3x main sebulan. Atau sesuai kesepakatan.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('tg5', 'Rencana Punya Anak')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('f5', 'Budget Main')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
-        </div>
-    </div>
-
-    <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
-        <iconify-icon icon="solar:hand-stars-bold" class="card-icon-bg"></iconify-icon>
-        <div class="category-header">
-            <iconify-icon icon="solar:money-bag-bold"></iconify-icon>
-            <span class="category-title">5. Keuangan & Aksi <span class="badge badge-money">TRANSPARAN</span></span>
-        </div>
-        <div class="item-list">
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ku1"></div>
-                <label for="ku1">
-                    <span class="item-text">Penggabungan / Pisah Rekening?</span>
-                    <span class="item-details">Kalau dua-duanya berpenghasilan, apakah uang istri adalah uang istri, dan uang suami buat bersama? Atau semua disetor ke satu rekening operasional rumah tangga?</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="f6"></div>
+                <label for="f6">
+                    <span class="item-text">Aturan Bonus</span>
+                    <span class="item-details">Jika ada bonus dll: 50% Tabung, 50% Main.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ku1', 'Sistem Rekening Rumah Tangga')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('f6', 'Aturan Bonus')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ku2"></div>
-                <label for="ku2">
-                    <span class="item-text">Alokasi Gaji Pokok Alfa (Rp 2.7 Juta)</span>
-                    <span class="item-details">
-                        Pemetaan dasar:
-                        <ul>
-                            <li>Gaji Pokok: Rp 2.700.000 + Tambahan: Rp 700.000.</li>
-                            <li>Kebutuhan Alfa: 500k (Makan), 300k (Bensin), 150k (Kuota), 100k (Listrik). Sisa wajib dialokasikan.</li>
-                        </ul>
-                    </span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="f7"></div>
+                <label for="f7">
+                    <span class="item-text">Quality Time</span>
+                    <span class="item-details">Banyakin main di rumah & masak bareng.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ku2', 'Alokasi Gaji Alfa')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('f7', 'Quality Time')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ku3"></div>
-                <label for="ku3">
-                    <span class="item-text">Tabungan Paksa (Rp 2 Juta/Bulan)</span>
-                    <span class="item-details">500k untuk patungan kontrakan, 1.500k full buat nikah. <strong>Target Alfa:</strong> Ada uang cash Rp 20.000.000 di Februari 2027.</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="b1"></div>
+                <label for="b1">
+                    <span class="item-text">Platform & Eksekusi Dimsum</span>
+                    <span class="item-details">Target: Toko Shopee & GrabFood. Deadline: MEI sudah BUKA!</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ku3', 'Target Tabungan Paksa')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('b1', 'Platform & Eksekusi Dimsum')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ku4"></div>
-                <label for="ku4">
-                    <span class="item-text">Dana Darurat & Servis</span>
-                    <span class="item-details">Wajib siapkan pos dana darurat bulanan untuk hal tak terduga (Misal: laptop ngadat, atau tiba-tiba harus servis karbu motor kayak bulan Maret kemarin habis 75k).</span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="b2"></div>
+                <label for="b2">
+                    <span class="item-text">Modal Awal Dimsum: 500k</span>
+                    <span class="item-details">Diambil dari tabungan kontrakan bulan ini.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ku4', 'Pos Dana Darurat')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('b2', 'Modal Awal Dimsum')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
             <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ku5"></div>
-                <label for="ku5">
-                    <span class="item-text">Budget Main & Aturan Bonus</span>
-                    <span class="item-details">Sisa uang 350k - 800k untuk quality time pacaran. Kalau ada rezeki nomplok/bonus: <strong>50% Ditabung untuk masa depan, 50% Dipakai senang-senang/date.</strong></span>
+                <div class="checkbox-wrapper"><input type="checkbox" id="b3"></div>
+                <label for="b3">
+                    <span class="item-text">Aktivitas Dimsum</span>
+                    <span class="item-details">Setiap main, kita belajar harus diskusi dan ngobrol.</span>
                 </label>
-                <button class="btn-edit" onclick="openModal('ku5', 'Aturan Uang Bonus & Main')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
+                <button class="btn-edit" onclick="openModal('b3', 'Aktivitas Dimsum')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
             </div>
-
-            <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ku6"></div>
-                <label for="ku6">
-                    <span class="item-text">Hutang & Pinjaman <span class="badge badge-priority">CLEAR-KAN</span></span>
-                    <span class="item-details">Deklarasi jujur: Apakah saat ini ada cicilan, *paylater*, pinjol, atau hutang ke teman/keluarga sebelum kita menikah? Kita lunasin satu-satu.</span>
-                </label>
-                <button class="btn-edit" onclick="openModal('ku6', 'Deklarasi Hutang/Cicilan')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
-            </div>
-
-            <div class="item">
-                <div class="checkbox-wrapper"><input type="checkbox" id="ku7"></div>
-                <label for="ku7">
-                    <span class="item-text">Project Bareng: Bisnis Dimsum 🥟</span>
-                    <span class="item-details">
-                        <ul>
-                            <li>Modal Awal: Rp 500.000 (ambil dari tabungan kontrakan).</li>
-                            <li>Platform: Shopee & GrabFood.</li>
-                            <li>Target: MEI SUDAH OPENING! Setiap jalan bareng wajib ngebahas *progress* jualan.</li>
-                        </ul>
-                    </span>
-                </label>
-                <button class="btn-edit" onclick="openModal('ku7', 'Timeline Bisnis Dimsum')"><iconify-icon icon="solar:pen-bold"></iconify-icon></button>
-            </div>
-
         </div>
     </div>
 
     <div class="modal-overlay" id="answerModal">
         <div class="modal-content">
             <h3 class="modal-title" id="modalTitle">Judul Pertanyaan</h3>
-            <textarea class="modal-textarea" id="modalInput" placeholder="Ketik kesepakatan jujur kita di sini..."></textarea>
+            <textarea class="modal-textarea" id="modalInput" placeholder="Ketik jawaban atau catatan di sini..."></textarea>
             <div class="modal-actions">
-                <button class="btn-close" onclick="closeModal()">Tutup Dulu</button>
-                <button class="btn-save" onclick="saveAnswer()">Kunci Jawaban</button>
+                <button class="btn-close" onclick="closeModal()">Batal</button>
+                <button class="btn-save" onclick="saveAnswer()">Simpan</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <strong>Project Blueprint 2026 - 2027</strong><br>
-        Built with trust and commitment for Dilla & Alfa.<br>
-        <span style="font-size: 0.65rem; margin-top:5px; display:inline-block;">Powered by Transparency</span>
+        Our Strategic Plan - 2026<br>
+        Presented with Love  <strong></strong>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Konfigurasi Database Turso
+        // --- 1. SETTING URL DAN TOKEN TURSO KAMU DI SINI ---
         const TURSO_URL = "https://jobtracker-zhqnrf.aws-us-east-2.turso.io/v2/pipeline"; 
         const TURSO_TOKEN = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NzQ2ODcwMDAsImlkIjoiZTMzNjI2YTctNDAyMi00ZDQ4LWJmNzYtZDYzMDk4MDdjNWQ4IiwicmlkIjoiNDM5Yzg4NDUtMGEwMS00MzAxLTkzMjktZDZjNTljN2Q4ZTliIn0.Q92uGh3VbPE6OhU5SVgBlZ_fqhYA8DoULsWhZ_UOtKIaHEyZaqbddcYvdDaHA6KnnytFRUHjeKwxijl4wGIBBQ";
 
-        // Fungsi Request ke Database
+        // --- 2. FUNGSI UNTUK NGOBROL SAMA DATABASE ---
         async function queryTurso(sqlQuery, argsArray = []) {
             const formattedArgs = argsArray.map(arg => ({ type: "text", value: String(arg) }));
             const payload = {
@@ -427,6 +364,7 @@
                     { type: "close" }
                 ]
             };
+
             const response = await fetch(TURSO_URL, {
                 method: 'POST',
                 headers: {
@@ -435,63 +373,58 @@
                 },
                 body: JSON.stringify(payload)
             });
-            if (!response.ok) throw new Error("HTTP Error " + response.status);
+
+            if (!response.ok) {
+                console.error("Gagal nyambung ke Turso:", response.status);
+                throw new Error("HTTP Error " + response.status);
+            }
             return await response.json();
         }
 
-        // Init Tabel Database
+        // --- 3. BIKIN TABEL OTOMATIS SAAT WEB DIBUKA ---
         queryTurso("CREATE TABLE IF NOT EXISTS planner_notes (id TEXT PRIMARY KEY, content TEXT)")
-            .then(() => console.log("Database Connected Successfully!"))
+            .then(() => console.log("Database Siap!"))
             .catch(err => console.error("Database Error:", err));
 
-        // Partikel Background Aesthetic
+
+        // --- LOGIKA TAMPILAN (PARTICLES & CHECKBOX) ---
         particlesJS("particles-js", {
-          particles: { 
-              number: { value: 70, density: { enable: true, value_area: 800 } }, 
-              color: { value: ["#8e44ad", "#ff9f43", "#f1c40f"] }, 
-              shape: { type: "circle" }, 
-              opacity: { value: 0.4, random: true }, 
-              size: { value: 3.5, random: true }, 
-              line_linked: { enable: true, distance: 130, color: "#8e44ad", opacity: 0.15, width: 1 }, 
-              move: { enable: true, speed: 1.2, direction: "none", random: true, straight: false, out_mode: "out" } 
-          },
-          interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } }, 
-          retina_detect: true
+          particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: ["#8e44ad", "#ff9f43", "#ffffff"] }, shape: { type: "circle" }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: "#8e44ad", opacity: 0.1, width: 1 }, move: { enable: true, speed: 1.5, direction: "none", random: true, straight: false, out_mode: "out" } },
+          interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } }, retina_detect: true
         });
 
-        // Handler Checkbox (Simpan status ceklis lokal)
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(box => {
             if (localStorage.getItem(box.id) === 'true') box.checked = true;
             box.addEventListener('change', () => {
                 localStorage.setItem(box.id, box.checked);
-                // Efek getar di HP saat ceklis
-                if (box.checked && window.navigator.vibrate) window.navigator.vibrate([40, 30, 40]);
+                if (box.checked && window.navigator.vibrate) window.navigator.vibrate(80);
             });
         });
 
-        // Handler Modal Form
+        // --- LOGIKA MODAL (AMBIL & SIMPAN DATA KE TURSO) ---
         let currentNoteId = null;
 
         async function openModal(id, title) {
             currentNoteId = id;
             document.getElementById('modalTitle').innerText = title;
             const inputField = document.getElementById('modalInput');
-            inputField.value = 'Membaca riwayat diskusi...';
+            inputField.value = 'Memuat data...';
             document.getElementById('answerModal').classList.add('active');
 
             try {
-                // Tarik data dari server Turso
+                // Ambil data dari Turso
                 const data = await queryTurso("SELECT content FROM planner_notes WHERE id = ?", [id]);
+                
+                // Cek apakah datanya ada
                 if (data.results && data.results[0].response.result.rows.length > 0) {
                     inputField.value = data.results[0].response.result.rows[0][0].value;
                 } else {
                     inputField.value = '';
                 }
             } catch (err) {
-                console.error("Gagal load dari server", err);
-                // Fallback kalau internet putus
-                inputField.value = localStorage.getItem('note_backup_'+id) || ''; 
+                console.error(err);
+                inputField.value = localStorage.getItem('note_'+id) || ''; // Fallback lokal
             }
         }
 
@@ -505,26 +438,90 @@
             btnSave.innerText = 'Menyimpan...';
 
             try {
-                // Tembak data ke Turso
+                // Simpan data ke Turso
                 await queryTurso(
                     "INSERT INTO planner_notes (id, content) VALUES (?, ?) ON CONFLICT(id) DO UPDATE SET content = excluded.content", 
                     [currentNoteId, text]
                 );
-                // Backup Lokal jaga-jaga
-                localStorage.setItem('note_backup_'+currentNoteId, text); 
                 
-                btnSave.innerText = 'Disimpan!';
+                localStorage.setItem('note_'+currentNoteId, text); // Backup lokal
+                btnSave.innerText = 'Tersimpan!';
                 setTimeout(() => {
                     closeModal();
-                    btnSave.innerText = 'Kunci Jawaban';
+                    btnSave.innerText = 'Simpan';
                 }, 800);
             } catch (err) {
-                console.error("Gagal nyimpan online", err);
-                alert('Server sedang sibuk. Disimpan secara lokal (Offline Mode).');
-                localStorage.setItem('note_backup_'+currentNoteId, text);
+                console.error(err);
+                alert('Gagal nyimpan ke database, tapi aman di memori HP/Laptop.');
+                localStorage.setItem('note_'+currentNoteId, text);
                 closeModal();
-                btnSave.innerText = 'Kunci Jawaban';
+                btnSave.innerText = 'Simpan';
             }
+        }
+        // --- LOGIKA ROLLER ACAK ALFA / DILLA ---
+        function openRoller() {
+            document.getElementById('rollerModal').classList.add('active');
+            const rollerBox = document.getElementById('rollerBox');
+            rollerBox.innerText = '???';
+            rollerBox.style.color = 'white';
+            rollerBox.style.borderColor = 'var(--secondary)';
+            document.getElementById('btnStartRoll').innerText = '🎲 Putar!';
+        }
+
+        function closeRoller() {
+            document.getElementById('rollerModal').classList.remove('active');
+        }
+
+        function startRolling() {
+            const rollerBox = document.getElementById('rollerBox');
+            const btnStart = document.getElementById('btnStartRoll');
+            
+            // Cegah klik berulang saat sedang muter
+            if (btnStart.disabled) return;
+            btnStart.disabled = true;
+            btnStart.innerText = 'Mengacak...';
+
+            const names = ['ALFA', 'DILLA'];
+            let counter = 0;
+            const maxRolls = 25; // Berapa kali nama berkedip sebelum berhenti
+            let speed = 60; // Kecepatan kedip awal (ms)
+
+            // Efek suara getar (jika di HP)
+            if (window.navigator.vibrate) window.navigator.vibrate(50);
+
+            const rollInterval = setInterval(() => {
+                // Ganti-ganti nama
+                rollerBox.innerText = names[counter % 2];
+                // Ganti-ganti warna biar seru
+                rollerBox.style.color = counter % 2 === 0 ? 'var(--secondary)' : 'var(--accent)';
+                rollerBox.style.borderColor = counter % 2 === 0 ? 'var(--secondary)' : 'var(--accent)';
+                
+                counter++;
+
+                // Saat putaran mau habis, pelankan sedikit lalu berhenti
+                if (counter >= maxRolls) {
+                    clearInterval(rollInterval);
+                    
+                    // PENENTUAN PEMENANG (Random 50:50)
+                    const winner = Math.random() < 0.5 ? 'ALFA' : 'DILLA';
+                    
+                    setTimeout(() => {
+                        rollerBox.innerText = winner + " !";
+                        rollerBox.style.color = 'var(--gold)';
+                        rollerBox.style.borderColor = 'var(--gold)';
+                        rollerBox.classList.add('animate__animated', 'animate__tada'); // Efek mental
+                        
+                        if (window.navigator.vibrate) window.navigator.vibrate([100, 50, 100]); // Getar panjang saat menang
+
+                        setTimeout(() => {
+                            rollerBox.classList.remove('animate__animated', 'animate__tada');
+                            btnStart.disabled = false;
+                            btnStart.innerText = '🎲 Putar Lagi';
+                        }, 1000);
+
+                    }, 200);
+                }
+            }, speed);
         }
     </script>
 </body>
